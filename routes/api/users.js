@@ -16,7 +16,7 @@ router.post(
   "/",
   [
     check("name", "Name is required").not().isEmpty(),
-    check("email", "Email is required").not().isEmpty(),
+    check("email", "Please include a valid email address").isEmail(),
     check(
       "password",
       "Please enter a password with 6 or more characters"
@@ -76,3 +76,5 @@ router.post(
     }
   }
 );
+
+module.exports = router;

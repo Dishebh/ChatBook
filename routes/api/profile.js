@@ -4,6 +4,7 @@ const config = require("config");
 const router = express.Router();
 const auth = require("../../middleware/auth");
 const { check, validationResult } = require("express-validator");
+const checkObjectId = require("../../middleware/checkObjectId");
 
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
@@ -77,7 +78,7 @@ router.post(
     // Build social object and add to profileFields
     const socialFields = { youtube, twitter, instagram, linkedin, facebook };
 
-    for ((key, value) of Object.entries(socialFields)) {
+    for (const [key, value] of Object.entries(socialFields)) {
       if (value && value.length > 0) {
         socialFields[key] = value;
       }
