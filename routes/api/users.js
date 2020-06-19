@@ -27,8 +27,11 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+
+    const { name, email, password } = req.body;
+
     try {
-      const user = await User.findOne({ email });
+      let user = await User.findOne({ email });
 
       if (user) {
         return res.status(400).json({ msg: "User already exists" });
@@ -53,7 +56,7 @@ router.post(
 
       user.password = await bcrypt.hash(password, salt);
 
-      await User.save();
+      await user.save();
 
       const payload = {
         user: {
