@@ -26,6 +26,13 @@ export default function (state = initialState, action) {
         isAuthenticated: true,
         user: payload,
       };
+    case AUTH_ERROR:
+    case LOGIN_FAIL:
+      return {
+        ...state,
+        loading: false,
+        token: null,
+      };
     default:
       return state;
   }

@@ -46,7 +46,11 @@ router.post(
         return res.status(400).send("User not found!");
       }
 
+      console.log("user: ", user);
+
       const isMatch = await bcrypt.compare(password, user.password);
+
+      console.log("isMatch: ", isMatch);
 
       if (!isMatch) {
         return res.status(400).send("Invalid credentials!");
@@ -54,7 +58,7 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id,
+          id: user._id,
         },
       };
 
