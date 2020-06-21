@@ -8,6 +8,10 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
+import ProfileForm from "./components/profile-forms/ProfileForm";
+import AddEducation from "./components/profile-forms/AddEducation";
+import AddExperience from "./components/profile-forms/AddExperience";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 
@@ -30,6 +34,10 @@ const App = () => {
             <Route exact path="/dashboard" component={Dashboard}></Route>
             <Route exact path="/register" component={Register}></Route>
             <Route exact path="/profiles" component={Profiles}></Route>
+            <Route exact path="/profiles/:id" component={Profile}></Route>
+            <Route exact path="/edit-profile" component={ProfileForm} />
+            <Route exact path="/add-experience" component={AddExperience} />
+            <Route exact path="/add-education" component={AddEducation} />
           </Switch>
         </Fragment>
       </Router>
